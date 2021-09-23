@@ -1,37 +1,61 @@
-import { useState } from 'react';
-import styled, { keyframes, css } from 'styled-components';
+import styled from 'styled-components';
+import { findAngle, findApothem, findRadius } from '../utils';
+import Facet from './Facet';
 
-const StyledForeground = styled.div`
-  background: rgba(255, 200, 200, 0.5);
-  border: 1px solid red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 500px;
-  height: 300px;
-  @keyframes rotate {
-    50% {
-      transform: translateZ(20px) rotate3d(0.5, -0.5, 0, 360deg);
-    }
-  }
+const StyledWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: pink;
+  transform-style: preserve-3d;
+
+  transition: all 0.5s ease-in-out;
 `;
 
-const Foreground = () => {
-  const [turning, setTurning] = useState(false);
+const Foreground = ({ number }) => {
+  let time = Date.now();
+  let facets = [...Array(number + 1).keys()];
+
+  facets.shift();
+
+  const apothem = findApothem(facets.length, 30);
+  const angle = findAngle(facets.length);
+  const radius = findRadius(facets.length, 30);
+  let angleMultiplier = 1;
+
   const handleClick = (e) => {
-    if (!turning) {
-      e.target.style.animation = 'rotate 5s linear infinite';
-      setTurning(true);
-    } else {
-      e.target.style.animation = null;
-      setTurning(false);
+    const newTime = Date.now();
+    let timeSinceClick = newTime - time;
+    console.log(e);
+    if (timeSinceClick > 700) {
+      let newAngle = angle * angleMultiplier;
+      e.target.parentNode.style.transform = `rotateY(${newAngle}deg)`;
+      angleMultiplier++;
+      time = newTime;
     }
   };
 
+  facets = facets.map((facet) => {
+    return (
+      <Facet
+        num={facet}
+        key={facet}
+        angle={(facet - 1) * angle}
+        apothem={apothem}
+      />
+    );
+  });
+
   return (
-    <StyledForeground onClick={handleClick}>
-      <h1>Foreground</h1>
-    </StyledForeground>
+    <StyledWrapper
+      onClick={handleClick}
+      // height={height}
+      // width={width}
+      apothem={apothem}
+      radius={radius}
+    >
+      {facets}
+    </StyledWrapper>
   );
 };
 
