@@ -1,28 +1,24 @@
 import styled from 'styled-components';
 
-export const StyledFacet = styled.div`
-  background: rgba(100, 100, 100, 0.4);
-  color: lime;
-  position: absolute;
-  top: calc(50vh - 10rem);
-  left: calc(50vw - 15rem);
-  border: 1px solid lime;
+const StyledFacet = styled.div`
   display: flex;
+  color: lime;
   justify-content: center;
   align-items: center;
-  width: 30rem;
+  background: rgba(200, 200, 200, 0.3);
+  border: 1px solid lime;
   height: 20rem;
-  /* width: ${(props) => `${props.width}rem`};
-  height: ${(props) => `${props.height}rem`}; */
-  /* margin-left: 4rem; */
+  width: 30rem;
+  position: absolute;
+  left: -15rem;
+  top: 0;
   transform: ${(props) =>
     `rotateY(${props.angle}deg) translateZ(${props.apothem}rem)`};
 `;
-
-const Facet = ({ num, angle, apothem }) => {
+const Facet = ({ number, angle, apothem }) => {
   return (
     <StyledFacet angle={angle} apothem={apothem}>
-      <h1>{num}</h1>
+      {number}
     </StyledFacet>
   );
 };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Foreground from './Foreground';
+import Carousel from './Carousel';
 import styled from 'styled-components';
 
 const StyledApp = styled.div`
@@ -8,11 +8,7 @@ const StyledApp = styled.div`
   align-items: center;
   height: 100vh;
   width: 100vw;
-  /* background-image: url('assets/bigspace.jpg'); */
   background: slategray;
-  background-size: cover;
-  perspective: 90rem;
-  /* perspective-origin: 50% 150%;   */
   overflow: hidden;
 `;
 
@@ -37,7 +33,8 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setNumberOfFacets(facetInput);
+    console.log(facetInput);
+    setNumberOfFacets(+facetInput);
     setInputVisible(false);
   };
   return (
@@ -54,13 +51,7 @@ const App = () => {
           />
         </form>
       )}
-      {!inputVisible && (
-        <Foreground
-          number={+numberOfFacets}
-          // height={heightInput}
-          // width={widthInput}
-        ></Foreground>
-      )}
+      {!inputVisible && <Carousel number={numberOfFacets} />}
     </StyledApp>
   );
 };
