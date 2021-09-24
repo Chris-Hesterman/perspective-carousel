@@ -1,15 +1,18 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { findApothem, findAngle } from '../utils';
 import Facet from './Facet';
 
 const StyledCarousel = styled.div`
   height: 20rem;
-  perspective: 100rem;
-  perspective-origin: 0 50vh;
   transition: all 1s ease-in-out;
+  transform-origin: center;
+  transform-style: preserve-3d;
 `;
 
 const Carousel = ({ number }) => {
+  const [rotationAngle, setRotationAngle] = useState(0);
+  const [time, setTime] = useState(Date.now());
   let facets = [...Array(number + 1).keys()];
   facets.shift();
 
@@ -17,10 +20,13 @@ const Carousel = ({ number }) => {
   const angle = findAngle(facets.length);
 
   const handleClick = (e) => {
-    console.log(angle);
-    console.log(e.target);
-    const newAngle = angle * +e.target.textContent - 1;
-    e.target.parentNode.style.transform = `rotateY(${newAngle}deg)`;
+    const timeNow = Date.now();
+    console.log(timeNow - time);
+    if (timeNow - time > 1000) {
+      setRotationAngle(angle + rotationAngle);
+      setTime(timeNow);
+      e.target.parentNode.style.transform = `rotateY(${-rotationAngle}deg)`;
+    }
   };
 
   facets = facets.map((facet) => {

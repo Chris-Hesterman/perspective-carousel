@@ -10,6 +10,8 @@ const StyledApp = styled.div`
   width: 100vw;
   background: slategray;
   overflow: hidden;
+  perspective: 200rem;
+  perspective-origin: 50% 125%;
 `;
 
 const App = () => {
