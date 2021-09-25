@@ -22,11 +22,27 @@ const StyledForm = styled.form`
   left: 0;
 `;
 
+const StyledInput = styled.input`
+  height: 2rem;
+  width: 5rem;
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  outline: none;
+`;
+
+const StyledLabel = styled.label`
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 2rem;
+  border: 3px double lime;
+  margin-left: 1rem;
+`;
+
 const App = () => {
   const [facetInput, setFacetInput] = useState(3);
   const [widthInput, setWidthInput] = useState(15);
   const [heightInput, setHeightInput] = useState(10);
-  // const [perspectiveInput, setPerspectiveInput] = useState(10);
+  const [marginInput, setMarginInput] = useState(0);
 
   const handleChange = (e) => {
     if (e.target.name === 'facets') {
@@ -38,54 +54,62 @@ const App = () => {
     if (e.target.name === 'height') {
       setHeightInput(+e.target.value);
     }
-    // if (e.target.name === 'perspective') {
-    //   setPerspectiveInput(+e.target.value);
-    // }
+    if (e.target.name === 'margin') {
+      setMarginInput(+e.target.value);
+    }
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  // };
-
   return (
     <StyledApp className="App" perspective={200}>
-      <Carousel number={facetInput} width={widthInput} height={heightInput} />
+      <Carousel
+        number={facetInput}
+        width={widthInput}
+        height={heightInput}
+        margin={marginInput}
+      />
       <StyledForm>
-        <input
-          name="facets"
-          type="number"
-          value={facetInput}
-          onChange={handleChange}
-          placeholder="# OF FACETS"
-          min="3"
-        />
-        <input
-          name="width"
-          type="number"
-          value={widthInput}
-          onChange={handleChange}
-          placeholder="WIDTH (rem)"
-          min="10"
-          step="5"
-        />
-        <input
-          name="height"
-          type="number"
-          value={heightInput}
-          onChange={handleChange}
-          placeholder="HEIGHT (rem)"
-          min="5"
-          step="5"
-        />
-        {/* <input
-          name="perspective"
-          type="number"
-          value={perspectiveInput}
-          onChange={handleChange}
-          placeholder="PERSPECTIVE (rem)"
-          min="10"
-          step="10"
-        /> */}
+        <StyledLabel>
+          <StyledInput
+            name="facets"
+            type="number"
+            value={facetInput}
+            onChange={handleChange}
+            min="3"
+          />
+          # FACETS
+        </StyledLabel>
+        <StyledLabel>
+          <StyledInput
+            name="width"
+            type="number"
+            value={widthInput}
+            onChange={handleChange}
+            min="10"
+            step="5"
+          />
+          WIDTH - rem
+        </StyledLabel>
+        <StyledLabel>
+          <StyledInput
+            name="height"
+            type="number"
+            value={heightInput}
+            onChange={handleChange}
+            min="5"
+            step="5"
+          />
+          HEIGHT - rem
+        </StyledLabel>
+        <StyledLabel>
+          <StyledInput
+            name="margin"
+            type="number"
+            value={marginInput}
+            onChange={handleChange}
+            min="0"
+            step="2"
+          />
+          MARGIN - rem
+        </StyledLabel>
       </StyledForm>
     </StyledApp>
   );

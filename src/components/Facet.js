@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import styled from 'styled-components';
 
 const StyledFacet = styled.div`
@@ -5,19 +6,30 @@ const StyledFacet = styled.div`
   color: lime;
   justify-content: center;
   align-items: center;
-  background: rgba(200, 200, 200, 0.3);
+  background: rgba(200, 200, 200, 0.5);
   border: 1px solid lime;
   height: ${(props) => `${props.height}rem`};
   width: ${(props) => `${props.width}rem`};
   position: absolute;
+  margin: ${(props) => `${props.margin / 2}rem`};
   left: ${(props) => `${-props.width / 2}rem`};
   top: ${(props) => `${-props.height / 2}rem`};
   transform: ${(props) =>
     `rotateY(${props.angle}deg) translateZ(${props.apothem}rem)`};
 `;
-const Facet = ({ number, angle, apothem, width, height }) => {
+const Facet = ({ number, angle, apothem, width, height, margin }) => {
+  const facetRef = useRef();
+  console.log(facetRef);
+
   return (
-    <StyledFacet angle={angle} apothem={apothem} width={width} height={height}>
+    <StyledFacet
+      angle={angle}
+      apothem={apothem}
+      width={width}
+      height={height}
+      margin={margin}
+      ref={facetRef}
+    >
       {number}
     </StyledFacet>
   );

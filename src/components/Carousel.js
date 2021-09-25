@@ -10,13 +10,13 @@ const StyledCarousel = styled.div`
   transform-style: preserve-3d;
 `;
 
-const Carousel = ({ number, width, height }) => {
+const Carousel = ({ number, width, height, margin }) => {
   const [rotationAngle, setRotationAngle] = useState(0);
   const [time, setTime] = useState(Date.now());
   let facets = [...Array(number + 1).keys()];
   facets.shift();
 
-  const apothem = findApothem(facets.length, width);
+  const apothem = findApothem(facets.length, width + margin);
   const angle = findAngle(facets.length);
 
   const handleClick = (e) => {
