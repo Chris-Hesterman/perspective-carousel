@@ -4,25 +4,25 @@ import { findApothem, findAngle } from '../utils';
 import Facet from './Facet';
 
 const StyledCarousel = styled.div`
-  height: 20rem;
-  transition: all 1s ease-in-out;
+  height: ${(props) => `${props.height}rem`};
+  transition: all 0.5s ease-in-out;
   transform-origin: center;
   transform-style: preserve-3d;
 `;
 
-const Carousel = ({ number }) => {
+const Carousel = ({ number, width, height }) => {
   const [rotationAngle, setRotationAngle] = useState(0);
   const [time, setTime] = useState(Date.now());
   let facets = [...Array(number + 1).keys()];
   facets.shift();
 
-  const apothem = findApothem(facets.length, 30);
+  const apothem = findApothem(facets.length, width);
   const angle = findAngle(facets.length);
 
   const handleClick = (e) => {
     const timeNow = Date.now();
     console.log(timeNow - time);
-    if (timeNow - time > 1000) {
+    if (timeNow - time > 700) {
       setRotationAngle(angle + rotationAngle);
       setTime(timeNow);
       e.target.parentNode.style.transform = `rotateY(${-rotationAngle}deg)`;
@@ -36,12 +36,14 @@ const Carousel = ({ number }) => {
         number={facet}
         angle={angle * (facet - 1)}
         apothem={apothem}
+        width={width}
+        height={height}
       />
     );
   });
 
   return (
-    <StyledCarousel angle={angle} onClick={handleClick}>
+    <StyledCarousel angle={angle} onClick={handleClick} heigth={height}>
       {facets}
     </StyledCarousel>
   );

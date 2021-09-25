@@ -7,17 +7,17 @@ const StyledFacet = styled.div`
   align-items: center;
   background: rgba(200, 200, 200, 0.3);
   border: 1px solid lime;
-  height: 20rem;
-  width: 30rem;
+  height: ${(props) => `${props.height}rem`};
+  width: ${(props) => `${props.width}rem`};
   position: absolute;
-  left: -15rem;
-  top: 0;
+  left: ${(props) => `${-props.width / 2}rem`};
+  top: ${(props) => `${-props.height / 2}rem`};
   transform: ${(props) =>
     `rotateY(${props.angle}deg) translateZ(${props.apothem}rem)`};
 `;
-const Facet = ({ number, angle, apothem }) => {
+const Facet = ({ number, angle, apothem, width, height }) => {
   return (
-    <StyledFacet angle={angle} apothem={apothem}>
+    <StyledFacet angle={angle} apothem={apothem} width={width} height={height}>
       {number}
     </StyledFacet>
   );
