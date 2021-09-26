@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import styled from 'styled-components';
 
 const StyledFacet = styled.div`
@@ -18,9 +17,6 @@ const StyledFacet = styled.div`
     `rotateY(${props.angle}deg) translateZ(${props.apothem}rem)`};
 `;
 const Facet = ({ number, angle, apothem, width, height, margin }) => {
-  const facetRef = useRef();
-  console.log(facetRef);
-
   return (
     <StyledFacet
       angle={angle}
@@ -28,7 +24,6 @@ const Facet = ({ number, angle, apothem, width, height, margin }) => {
       width={width}
       height={height}
       margin={margin}
-      ref={facetRef}
     >
       {number}
     </StyledFacet>

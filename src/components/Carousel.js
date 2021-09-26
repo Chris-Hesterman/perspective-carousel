@@ -21,7 +21,7 @@ const Carousel = ({ number, width, height, margin }) => {
 
   const handleClick = (e) => {
     const timeNow = Date.now();
-    console.log(timeNow - time);
+
     if (timeNow - time > 700) {
       setRotationAngle(angle + rotationAngle);
       setTime(timeNow);
