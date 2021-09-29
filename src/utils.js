@@ -6,7 +6,6 @@ export const findApothem = (numSides, length) => {
 };
 
 export const findAngle = (numSides) => {
-  console.log([numSides, 360 / numSides]);
   return +(360 / numSides).toFixed(2);
 };
 
