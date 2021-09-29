@@ -4,7 +4,7 @@ import { findApothem, findAngle } from '../utils';
 import { StyledCarousel } from './CarouselStyles';
 import Facet from './Facet';
 
-const Carousel = ({ number, width, height, margin }) => {
+const Carousel = ({ number, width, height, margin, zIndex }) => {
   const time = useRef(Date.now());
   const carouselRef = useRef();
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -73,8 +73,8 @@ const Carousel = ({ number, width, height, margin }) => {
     <StyledCarousel
       angle={angle}
       onClick={handleClick}
-      heigth={height}
       ref={carouselRef}
+      zIndex={zIndex}
     >
       {facets}
     </StyledCarousel>

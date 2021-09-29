@@ -14,26 +14,21 @@ export const StyledApp = styled.div`
   perspective-origin: ${(props) => `50% ${props.originY}%`};
 `;
 
-export const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
+export const StyledButton = styled.button`
+  display: inline-block;
   position: absolute;
-  top: 5vh;
-  left: 0;
-`;
-
-export const StyledInput = styled.input`
-  height: 2rem;
-  width: 5rem;
-  font-size: 2rem;
-  margin-right: 0.5rem;
+  top: 0.5rem;
+  left: 1rem;
+  font-size: 1rem;
+  width: 15rem;
+  height: 2.5rem;
   outline: none;
-`;
-
-export const StyledLabel = styled.label`
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 2rem;
-  border: 3px double lime;
-  margin-left: 1rem;
+  border: 1px solid red;
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    transform: translate(2px, 2px);
+    border-radius: 5px;
+  }
 `;

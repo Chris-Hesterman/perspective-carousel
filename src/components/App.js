@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Carousel from './Carousel';
-import { StyledApp, StyledForm, StyledInput, StyledLabel } from './AppStyles';
+import { StyledApp, StyledButton } from './AppStyles';
+import Form from './Form';
 
 const App = () => {
   const [facetInput, setFacetInput] = useState(3);
@@ -9,6 +10,8 @@ const App = () => {
   const [marginInput, setMarginInput] = useState(0);
   const [perspectiveInput, setPerspectiveInput] = useState(80);
   const [originYInput, setOriginYInput] = useState(80);
+  const [zIndexInput, setZIndexInput] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
 
   const handleChange = (e) => {
     if (e.target.name === 'facets') {
@@ -29,86 +32,42 @@ const App = () => {
     if (e.target.name === 'origin') {
       setOriginYInput(+e.target.value);
     }
+    if (e.target.name === 'zIndex') {
+      setZIndexInput(+e.target.value);
+    }
   };
+
+  const handleClick = (e) => {
+    setIsVisible(!isVisible);
+  };
+
   return (
     <StyledApp
       className="App"
       perspective={perspectiveInput}
       originY={originYInput}
     >
+      <StyledButton onClick={handleClick}>
+        {isVisible ? 'HIDE SETTINGS' : 'SHOW SETTINGS'}
+      </StyledButton>
       <Carousel
         number={facetInput}
         width={widthInput}
         height={heightInput}
         margin={marginInput}
+        zIndex={zIndexInput}
       />
-      <StyledForm>
-        <StyledLabel>
-          <StyledInput
-            name="facets"
-            type="number"
-            value={facetInput}
-            onChange={handleChange}
-            min="3"
-          />
-          # FACETS
-        </StyledLabel>
-        <StyledLabel>
-          <StyledInput
-            name="width"
-            type="number"
-            value={widthInput}
-            onChange={handleChange}
-            min="10"
-            step="5"
-          />
-          WIDTH - rem
-        </StyledLabel>
-        <StyledLabel>
-          <StyledInput
-            name="height"
-            type="number"
-            value={heightInput}
-            onChange={handleChange}
-            min="5"
-            step="5"
-          />
-          HEIGHT - rem
-        </StyledLabel>
-        <StyledLabel>
-          <StyledInput
-            name="margin"
-            type="number"
-            value={marginInput}
-            onChange={handleChange}
-            min="0"
-            step="2"
-          />
-          MARGIN - rem
-        </StyledLabel>
-        <StyledLabel>
-          <StyledInput
-            name="perspective"
-            type="number"
-            value={perspectiveInput}
-            onChange={handleChange}
-            min="80"
-            step="10"
-          />
-          PERSPECTIVE - rem
-        </StyledLabel>
-        <StyledLabel>
-          <StyledInput
-            name="origin"
-            type="number"
-            value={originYInput}
-            onChange={handleChange}
-            min="80"
-            step="5"
-          />
-          Y ORIGIN - %
-        </StyledLabel>
-      </StyledForm>
+      <Form
+        isVisible={isVisible}
+        facetInput={facetInput}
+        widthInput={widthInput}
+        heightInput={heightInput}
+        marginInput={marginInput}
+        perspectiveInput={perspectiveInput}
+        originYInput={originYInput}
+        zIndexInput={zIndexInput}
+        handleChange={handleChange}
+      />
     </StyledApp>
   );
 };

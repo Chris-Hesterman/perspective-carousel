@@ -5,4 +5,5 @@ export const StyledCarousel = styled.div`
   transition: all 0.5s ease-in-out;
   transform-origin: center;
   transform-style: preserve-3d;
+  transform: ${(props) => `translateZ(${props.zIndex}rem)`};
 `;
