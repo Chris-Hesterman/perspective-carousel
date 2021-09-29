@@ -40,7 +40,9 @@ const Carousel = ({ number, width, height, margin }) => {
     carouselRef.current.childNodes.forEach((node) => {
       const isBehind = backSides.includes(+node.textContent);
 
-      node.style.background = isBehind ? 'gray' : 'rgba(200, 200, 200, 0.5)';
+      node.style.background = isBehind
+        ? 'rgba(100, 100, 100, .7)'
+        : 'rgba(200, 200, 200, 0.5)';
       node.style.color = isBehind ? 'transparent' : 'lime';
     });
   }, [backSides]);

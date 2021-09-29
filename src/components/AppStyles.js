@@ -6,10 +6,12 @@ export const StyledApp = styled.div`
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background: slategray;
+  background: url('./assets/bigspace.jpg');
+  background-size: cover;
   overflow: hidden;
+  transform: all 1s ease-in;
   perspective: ${(props) => `${props.perspective}rem`};
-  perspective-origin: 50% 125%;
+  perspective-origin: ${(props) => `50% ${props.originY}%`};
 `;
 
 export const StyledForm = styled.form`

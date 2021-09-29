@@ -7,6 +7,8 @@ const App = () => {
   const [widthInput, setWidthInput] = useState(15);
   const [heightInput, setHeightInput] = useState(10);
   const [marginInput, setMarginInput] = useState(0);
+  const [perspectiveInput, setPerspectiveInput] = useState(80);
+  const [originYInput, setOriginYInput] = useState(80);
 
   const handleChange = (e) => {
     if (e.target.name === 'facets') {
@@ -21,9 +23,19 @@ const App = () => {
     if (e.target.name === 'margin') {
       setMarginInput(+e.target.value);
     }
+    if (e.target.name === 'perspective') {
+      setPerspectiveInput(+e.target.value);
+    }
+    if (e.target.name === 'origin') {
+      setOriginYInput(+e.target.value);
+    }
   };
   return (
-    <StyledApp className="App" perspective={200}>
+    <StyledApp
+      className="App"
+      perspective={perspectiveInput}
+      originY={originYInput}
+    >
       <Carousel
         number={facetInput}
         width={widthInput}
@@ -73,6 +85,28 @@ const App = () => {
             step="2"
           />
           MARGIN - rem
+        </StyledLabel>
+        <StyledLabel>
+          <StyledInput
+            name="perspective"
+            type="number"
+            value={perspectiveInput}
+            onChange={handleChange}
+            min="80"
+            step="10"
+          />
+          PERSPECTIVE - rem
+        </StyledLabel>
+        <StyledLabel>
+          <StyledInput
+            name="origin"
+            type="number"
+            value={originYInput}
+            onChange={handleChange}
+            min="80"
+            step="5"
+          />
+          Y ORIGIN - %
         </StyledLabel>
       </StyledForm>
     </StyledApp>
