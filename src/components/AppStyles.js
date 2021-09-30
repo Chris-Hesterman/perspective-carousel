@@ -10,6 +10,7 @@ export const StyledApp = styled.div`
   background-size: cover;
   overflow: hidden;
   transform: all 1s ease-in;
+  transform-style: preserve-3d;
   perspective: ${(props) => `${props.perspective}rem`};
   perspective-origin: ${(props) => `50% ${props.originY}%`};
 `;

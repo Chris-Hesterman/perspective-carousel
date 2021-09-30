@@ -10,7 +10,7 @@ const App = () => {
   const [marginInput, setMarginInput] = useState(0);
   const [perspectiveInput, setPerspectiveInput] = useState(80);
   const [originYInput, setOriginYInput] = useState(80);
-  const [zIndexInput, setZIndexInput] = useState(0);
+  const [zAxisInput, setZAxisInput] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
   const handleChange = (e) => {
@@ -32,8 +32,8 @@ const App = () => {
     if (e.target.name === 'origin') {
       setOriginYInput(+e.target.value);
     }
-    if (e.target.name === 'zIndex') {
-      setZIndexInput(+e.target.value);
+    if (e.target.name === 'zAxis') {
+      setZAxisInput(+e.target.value);
     }
   };
 
@@ -55,7 +55,7 @@ const App = () => {
         width={widthInput}
         height={heightInput}
         margin={marginInput}
-        zIndex={zIndexInput}
+        zAxis={zAxisInput}
       />
       <Form
         isVisible={isVisible}
@@ -65,7 +65,7 @@ const App = () => {
         marginInput={marginInput}
         perspectiveInput={perspectiveInput}
         originYInput={originYInput}
-        zIndexInput={zIndexInput}
+        zAxisInput={zAxisInput}
         handleChange={handleChange}
       />
     </StyledApp>

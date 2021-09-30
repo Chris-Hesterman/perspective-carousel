@@ -4,7 +4,7 @@ import { findApothem, findAngle } from '../utils';
 import { StyledCarousel } from './CarouselStyles';
 import Facet from './Facet';
 
-const Carousel = ({ number, width, height, margin, zIndex }) => {
+const Carousel = ({ number, width, height, margin, zAxis }) => {
   const time = useRef(Date.now());
   const carouselRef = useRef();
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,7 +22,7 @@ const Carousel = ({ number, width, height, margin, zIndex }) => {
     if (timeNow - time.current > 700) {
       rotationAngle += angle;
       time.current = timeNow;
-      e.target.parentNode.style.transform = `rotateY(${-rotationAngle}deg)`;
+      e.target.parentNode.style.transform = `rotateY(${-rotationAngle}deg) translateZ(${zAxis}rem)`;
       changeFacetColor();
     }
   };
@@ -74,7 +74,7 @@ const Carousel = ({ number, width, height, margin, zIndex }) => {
       angle={angle}
       onClick={handleClick}
       ref={carouselRef}
-      zIndex={zIndex}
+      zAxis={zAxis}
     >
       {facets}
     </StyledCarousel>

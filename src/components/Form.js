@@ -8,7 +8,7 @@ const Form = ({
   marginInput,
   perspectiveInput,
   originYInput,
-  zIndexInput,
+  zAxisInput,
   handleChange
 }) => {
   return (
@@ -79,13 +79,13 @@ const Form = ({
       </StyledLabel>
       <StyledLabel>
         <StyledInput
-          name="zIndex"
+          name="zAxis"
           type="number"
-          value={zIndexInput}
+          value={zAxisInput}
           onChange={handleChange}
           step="5"
         />
-        Z - INDEX (beta)
+        Z AXIS (beta)
       </StyledLabel>
     </StyledForm>
   );
