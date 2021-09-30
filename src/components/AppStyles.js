@@ -9,8 +9,9 @@ export const StyledApp = styled.div`
   background: url('./assets/bigspace.jpg');
   background-size: cover;
   overflow: hidden;
-  transform: all 1s ease-in;
+  transition: all 1s ease-in;
   transform-style: preserve-3d;
+  transform-origin: ${(props) => `50% 50% ${props.zAxis}rem`};
   perspective: ${(props) => `${props.perspective}rem`};
   perspective-origin: ${(props) => `50% ${props.originY}%`};
 `;

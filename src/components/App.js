@@ -46,6 +46,7 @@ const App = () => {
       className="App"
       perspective={perspectiveInput}
       originY={originYInput}
+      zAxis={zAxisInput}
     >
       <StyledButton onClick={handleClick}>
         {isVisible ? 'HIDE SETTINGS' : 'SHOW SETTINGS'}
