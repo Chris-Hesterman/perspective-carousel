@@ -1,6 +1,6 @@
 import { StyledForm } from './FormStyles';
-import Input from './Input';
-import { names, labels, steps } from '../constants';
+import Input from '../Input/Input';
+import { names, labels, steps } from '../../constants';
 
 const Form = (props) => {
   const inputs = names.map((name, index) => {

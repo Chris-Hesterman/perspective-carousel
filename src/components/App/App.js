@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Carousel from './Carousel';
+import Carousel from '../Carousel/Carousel';
 import { StyledApp, StyledButton } from './AppStyles';
-import Form from './Form';
+import Form from '../Form/Form';
 
 const App = () => {
   const [facetInput, setFacetInput] = useState(3);

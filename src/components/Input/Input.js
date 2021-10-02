@@ -1,4 +1,4 @@
-import { StyledLabel, StyledInput } from './FormStyles';
+import { StyledLabel, StyledInput } from './InputStyles';
 
 const Input = ({ title, name, value, handleChange, step }) => {
   return (

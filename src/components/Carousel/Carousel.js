@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import { useEffect, useCallback } from 'react/cjs/react.development';
-import { findApothem, findAngle } from '../utils';
+import { findApothem, findAngle } from '../../utils';
 import { StyledCarousel } from './CarouselStyles';
-import Facet from './Facet';
+import Facet from '../Facet/Facet';
 
 const Carousel = ({ number, width, height, margin, zAxis }) => {
   const time = useRef(Date.now());
