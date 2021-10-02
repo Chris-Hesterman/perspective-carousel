@@ -14,7 +14,8 @@ const App = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   const handleChange = (e) => {
-    if (e.target.name === 'facets') {
+    console.log('handlingChange');
+    if (e.target.name === 'facet') {
       setFacetInput(+e.target.value);
     }
     if (e.target.name === 'width') {
@@ -29,7 +30,7 @@ const App = () => {
     if (e.target.name === 'perspective') {
       setPerspectiveInput(+e.target.value);
     }
-    if (e.target.name === 'origin') {
+    if (e.target.name === 'originY') {
       setOriginYInput(+e.target.value);
     }
     if (e.target.name === 'zAxis') {
