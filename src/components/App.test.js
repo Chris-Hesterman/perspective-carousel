@@ -1,8 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import Form from './Form';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('AppComponent', () => {
+  it('renders button correctly', () => {
+    render(<App />);
+    const button = screen.getByText(/hide settings/i);
+    expect(button).toBeInTheDocument();
+  });
+});
+
+describe('onChange handler  (handleChange)', () => {
+  it('properly updates input value', () => {
+    render(<App />);
+  });
 });
