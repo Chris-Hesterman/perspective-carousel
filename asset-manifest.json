@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/perspective-carousel/static/css/main.89be9486.chunk.css",
+    "main.js": "/perspective-carousel/static/js/main.5a5a7573.chunk.js",
+    "main.js.map": "/perspective-carousel/static/js/main.5a5a7573.chunk.js.map",
+    "runtime-main.js": "/perspective-carousel/static/js/runtime-main.547431cb.js",
+    "runtime-main.js.map": "/perspective-carousel/static/js/runtime-main.547431cb.js.map",
+    "static/js/2.5a449189.chunk.js": "/perspective-carousel/static/js/2.5a449189.chunk.js",
+    "static/js/2.5a449189.chunk.js.map": "/perspective-carousel/static/js/2.5a449189.chunk.js.map",
+    "static/js/3.06217efb.chunk.js": "/perspective-carousel/static/js/3.06217efb.chunk.js",
+    "static/js/3.06217efb.chunk.js.map": "/perspective-carousel/static/js/3.06217efb.chunk.js.map",
+    "index.html": "/perspective-carousel/index.html",
+    "static/css/main.89be9486.chunk.css.map": "/perspective-carousel/static/css/main.89be9486.chunk.css.map",
+    "static/js/2.5a449189.chunk.js.LICENSE.txt": "/perspective-carousel/static/js/2.5a449189.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.547431cb.js",
+    "static/js/2.5a449189.chunk.js",
+    "static/css/main.89be9486.chunk.css",
+    "static/js/main.5a5a7573.chunk.js"
+  ]
+}
