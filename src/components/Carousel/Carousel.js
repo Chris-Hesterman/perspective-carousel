@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import { useEffect, useCallback } from 'react/cjs/react.development';
 import { findApothem, findAngle } from '../../utils';
 import { StyledCarousel } from './CarouselStyles';
 import Facet from '../Facet/Facet';
@@ -36,8 +36,7 @@ const Carousel = ({ number, width, height, margin, zAxis }) => {
     setFacetColor(carouselRef, backSides);
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const setFacetColor = () => {
+  const setFacetColor = useCallback(() => {
     carouselRef.current.childNodes.forEach((node) => {
       const isBehind = backSides.includes(+node.textContent);
 
@@ -46,7 +45,7 @@ const Carousel = ({ number, width, height, margin, zAxis }) => {
         : 'rgba(200, 200, 200, 0.5)';
       node.style.color = isBehind ? 'transparent' : 'lime';
     });
-  };
+  }, [backSides]);
 
   facets = facets.map((facet) => {
     const newAngle = angle * (facet - 1);
