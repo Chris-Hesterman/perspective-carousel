@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import { useEffect, useCallback } from 'react/cjs/react.development';
+import { useRef, useEffect, useCallback } from 'react';
 import { findApothem, findAngle } from '../../utils';
 import { StyledCarousel } from './CarouselStyles';
 import Facet from '../Facet/Facet';
