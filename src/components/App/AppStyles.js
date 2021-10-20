@@ -6,7 +6,7 @@ export const StyledApp = styled.div`
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background: url('./assets/bigspace.jpg');
+  background: url('./assets/bigspace.webp');
   background-size: cover;
   overflow: hidden;
   transition: all 1s ease-in;
