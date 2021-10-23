@@ -14,6 +14,7 @@ const App = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   const handleChange = (e) => {
+    console.log(e);
     console.log('handlingChange');
     if (e.target.name === 'facet') {
       setFacetInput(+e.target.value);

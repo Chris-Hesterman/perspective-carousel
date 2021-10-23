@@ -18,7 +18,11 @@ const Form = (props) => {
       />
     );
   });
-  return <StyledForm isVisible={props.isVisible}>{inputs}</StyledForm>;
+  return (
+    <StyledForm title="form" isVisible={props.isVisible}>
+      {inputs}
+    </StyledForm>
+  );
 };
 
 export default Form;

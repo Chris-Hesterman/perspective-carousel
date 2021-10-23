@@ -46,23 +46,25 @@ const Carousel = ({ number, width, height, margin, zAxis }) => {
     });
   }, [backSides]);
 
-  facets = facets.map((facet) => {
-    const newAngle = angle * (facet - 1);
+  const createFacets = () => {
+    return facets.map((facet) => {
+      const newAngle = angle * (facet - 1);
 
-    if (newAngle >= 90 && newAngle <= 270) {
-      backSides.push(facet);
-    }
-    return (
-      <Facet
-        key={facet}
-        number={facet}
-        angle={newAngle}
-        apothem={apothem}
-        width={width}
-        height={height}
-      />
-    );
-  });
+      if (newAngle >= 90 && newAngle <= 270) {
+        backSides.push(facet);
+      }
+      return (
+        <Facet
+          key={facet}
+          number={facet}
+          angle={newAngle}
+          apothem={apothem}
+          width={width}
+          height={height}
+        />
+      );
+    });
+  };
 
   useEffect(() => {
     setFacetColor();
@@ -74,8 +76,9 @@ const Carousel = ({ number, width, height, margin, zAxis }) => {
       onClick={handleClick}
       ref={carouselRef}
       zAxis={zAxis}
+      title="carousel"
     >
-      {facets}
+      {createFacets()}
     </StyledCarousel>
   );
 };

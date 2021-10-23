@@ -8,6 +8,7 @@ const Facet = ({ number, angle, apothem, width, height, margin }) => {
       width={width}
       height={height}
       margin={margin}
+      title="facet"
     >
       {number}
     </StyledFacet>
