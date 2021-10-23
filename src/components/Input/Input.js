@@ -7,7 +7,7 @@ const Input = ({ title, name, value, handleChange, step }) => {
         name={name}
         type="number"
         value={value}
-        onChange={handleChange}
+        onChange={(e) => handleChange({ type: name, payload: +e.target.value })}
         step={step}
       />
       {title}
