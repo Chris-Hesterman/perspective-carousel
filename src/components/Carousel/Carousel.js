@@ -46,7 +46,7 @@ const Carousel = ({ number, width, height, margin, zAxis }) => {
     });
   }, [backSides]);
 
-  const createFacets = () => {
+  const generateFacets = () => {
     return facets.map((facet) => {
       const newAngle = angle * (facet - 1);
 
@@ -78,7 +78,7 @@ const Carousel = ({ number, width, height, margin, zAxis }) => {
       zAxis={zAxis}
       title="carousel"
     >
-      {createFacets()}
+      {generateFacets()}
     </StyledCarousel>
   );
 };
