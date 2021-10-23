@@ -1,25 +1,11 @@
 import { StyledForm } from './FormStyles';
-import Input from '../Input/Input';
-import { names, labels, steps } from '../../constants';
+import { generateInputs } from '../../utils';
 
-const Form = (props) => {
-  const inputs = names.map((name, index) => {
-    const value = props[`${name}Input`];
+const Form = ({ settings, handleChange, isVisible }) => {
+  const inputs = generateInputs(settings, handleChange);
 
-    return (
-      <Input
-        key={name}
-        name={names[index]}
-        type="number"
-        value={value}
-        handleChange={props.handleChange}
-        step={steps[index]}
-        title={labels[index]}
-      />
-    );
-  });
   return (
-    <StyledForm title="form" isVisible={props.isVisible}>
+    <StyledForm title="form" isVisible={isVisible}>
       {inputs}
     </StyledForm>
   );

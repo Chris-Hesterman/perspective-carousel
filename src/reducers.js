@@ -1,11 +1,28 @@
 export const settingsReducer = (state, action) => {
-  console.log('using reducer', action);
   const setting = action.type;
-  const settings = {
+  const options = {
     facet: () => {
-      return action.payload;
+      return { ...state, facetInput: action.payload };
+    },
+    width: () => {
+      return { ...state, widthInput: action.payload };
+    },
+    height: () => {
+      return { ...state, heightInput: action.payload };
+    },
+    margin: () => {
+      return { ...state, marginInput: action.payload };
+    },
+    perspective: () => {
+      return { ...state, perspectiveInput: action.payload };
+    },
+    originY: () => {
+      return { ...state, originYInput: action.payload };
+    },
+    zAxis: () => {
+      return { ...state, zAxisInput: action.payload };
     }
   };
 
-  return settings[setting]();
+  return options[setting]();
 };

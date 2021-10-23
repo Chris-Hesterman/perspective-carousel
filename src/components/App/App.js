@@ -3,42 +3,11 @@ import Carousel from '../Carousel/Carousel';
 import { StyledApp, StyledButton } from './AppStyles';
 import Form from '../Form/Form';
 import { settingsReducer } from '../../reducers.js';
+import { initialSettings } from '../../constants';
 
 const App = () => {
-  const [facetInput, dispatchFacet] = useReducer(settingsReducer, 3);
-  const [widthInput, setWidthInput] = useState(15);
-  const [heightInput, setHeightInput] = useState(10);
-  const [marginInput, setMarginInput] = useState(0);
-  const [perspectiveInput, setPerspectiveInput] = useState(80);
-  const [originYInput, setOriginYInput] = useState(80);
-  const [zAxisInput, setZAxisInput] = useState(0);
+  const [settings, dispatch] = useReducer(settingsReducer, initialSettings);
   const [isVisible, setIsVisible] = useState(true);
-
-  const handleChange = (e) => {
-    console.log(e);
-    console.log('handlingChange');
-    // if (e.target.name === 'facet') {
-    //   setFacetInput(+e.target.value);
-    // }
-    if (e.target.name === 'width') {
-      setWidthInput(+e.target.value);
-    }
-    if (e.target.name === 'height') {
-      setHeightInput(+e.target.value);
-    }
-    if (e.target.name === 'margin') {
-      setMarginInput(+e.target.value);
-    }
-    if (e.target.name === 'perspective') {
-      setPerspectiveInput(+e.target.value);
-    }
-    if (e.target.name === 'originY') {
-      setOriginYInput(+e.target.value);
-    }
-    if (e.target.name === 'zAxis') {
-      setZAxisInput(+e.target.value);
-    }
-  };
 
   const handleClick = (e) => {
     setIsVisible(!isVisible);
@@ -47,30 +16,31 @@ const App = () => {
   return (
     <StyledApp
       className="App"
-      perspective={perspectiveInput}
-      originY={originYInput}
-      zAxis={zAxisInput}
+      perspective={settings.perspectiveInput}
+      originY={settings.originYInput}
+      zAxis={settings.zAxisInput}
     >
       <StyledButton onClick={handleClick}>
         {isVisible ? 'HIDE SETTINGS' : 'SHOW SETTINGS'}
       </StyledButton>
       <Carousel
-        number={facetInput}
-        width={widthInput}
-        height={heightInput}
-        margin={marginInput}
-        zAxis={zAxisInput}
+        number={settings.facetInput}
+        width={settings.widthInput}
+        height={settings.heightInput}
+        margin={settings.marginInput}
+        zAxis={settings.zAxisInput}
       />
       <Form
         isVisible={isVisible}
-        facetInput={facetInput}
-        widthInput={widthInput}
-        heightInput={heightInput}
-        marginInput={marginInput}
-        perspectiveInput={perspectiveInput}
-        originYInput={originYInput}
-        zAxisInput={zAxisInput}
-        handleChange={dispatchFacet}
+        facetInput={settings.facetInput}
+        widthInput={settings.widthInput}
+        heightInput={settings.heightInput}
+        marginInput={settings.marginInput}
+        perspectiveInput={settings.perspectiveInput}
+        originYInput={settings.originYInput}
+        zAxisInput={settings.zAxisInput}
+        handleChange={dispatch}
+        settings={settings}
       />
     </StyledApp>
   );

@@ -1,6 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Form from './Form';
+import { initialSettings } from '../../constants';
 
 describe('<Form /> component', () => {
   describe('settings', () => {
@@ -13,7 +14,8 @@ describe('<Form /> component', () => {
       perspectiveInput: 80,
       originYInput: 80,
       zAxisInput: 0,
-      handleChange: handleChange
+      handleChange: handleChange,
+      settings: initialSettings
     };
 
     beforeEach(() => {

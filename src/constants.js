@@ -1,3 +1,13 @@
+export const initialSettings = {
+  facetInput: 3,
+  widthInput: 15,
+  heightInput: 10,
+  marginInput: 0,
+  perspectiveInput: 80,
+  originYInput: 80,
+  zAxisInput: 0
+};
+
 export const names = [
   'facet',
   'width',
