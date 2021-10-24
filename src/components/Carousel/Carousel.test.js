@@ -1,9 +1,11 @@
-import { render, screen, cleanup } from '@testing-library/react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Carousel from './Carousel';
 
 describe('Carousel', () => {
   const testProps = {
     number: 3,
+    width: 15,
     height: 10,
     margin: 0,
     zAxis: 0
@@ -11,6 +13,7 @@ describe('Carousel', () => {
 
   const testProps2 = {
     number: 12,
+    width: 15,
     height: 10,
     margin: 0,
     zAxis: 0
@@ -18,6 +21,7 @@ describe('Carousel', () => {
 
   const testProps3 = {
     number: 25,
+    width: 15,
     height: 10,
     margin: 0,
     zAxis: 0
@@ -44,5 +48,14 @@ describe('Carousel', () => {
     const renderedFacets3 = screen.getAllByTitle('facet');
 
     expect(renderedFacets3.length).toBe(25);
+  });
+
+  it('responds to clicking on it', () => {
+    render(<Carousel {...testProps} />);
+
+    const carousel = screen.getByTitle('carousel');
+    const facets = screen.getAllByTitle('facet');
+
+    fireEvent.click(facets[0]);
   });
 });
