@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Perspective Carousel Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A utility for interactively examining effects of changing various settings
+of a 3d polygon based carousel.
 
-## Available Scripts
+## Screenshots
 
-In the project directory, you can run:
+![App Screenshot](https://raw.githubusercontent.com/Chris-Hesterman/ch-images/master/perspective-carousel.jpg?raw=true)
 
-### `npm start`
+## Tech
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Application**: React, styled-components
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Testing**: Jest, react-testing-library
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- installation can be skipped by navigating to deployed application at https://frosty-jepsen-0f87b6.netlify.app/
+  **Otherwise**
+- Clone this repo
+- from project root directory run the following -
 
-### `npm run build`
+```bash
+  npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- still in root directory of project, run the following -
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+    npm start
+```
 
-### `npm run eject`
+- navigate to http://localhost:3000 in browser
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Features
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- adjust desired parameters using the onscreen form
+  - carousel will respond to changes as they are changed
+- clicking on the carousel will make it turn to present the next facet
+- clicking on 'HIDE SETTINGS' will hide the form, allowing full visibility of carousel
+- clicking on 'SHOW SETTINGS' will bring the form back
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Running Tests
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- To run tests, run the following command
 
-## Learn More
+```bash
+  npm test
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+or
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- To run tests and include a coverage report
 
-### Code Splitting
+```bash
+  npm run coverage
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Appendix
 
-### Analyzing the Bundle Size
+- Why did I make this?
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  - I wanted to explore the CSS perspective property, initially to create a parallax effect
+  - As it evolved, I became more interested in creating 3d structures and animating them
+  - I had an idea for a 3d carousel, and I wanted to experiment to see how it could look
+  - learning more about various related properties, some sort of user control over them seemed like a good idea
 
-### Making a Progressive Web App
+- What are it's quirks to be resolved if possible?
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  - When adjusting the z-axis property, the carousel may go off to one side
+    - it snaps back to center when clicked on, now at the new z position
+    - although it works on mobile, it's not optimized for it. Inputs behave differently.
+    - more properties on the form, particularly y axis adjustment, possibly change background or style of facets somehow.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- What did I learn while doing this ?
+  - in addition to hooks I've used previously, I learned how to use 'useRef', 'useReducer', and although ultimately not in the app, forwardRef.
+    - using useRef to access properties of elements
+    - using useRef to store persistent values without causing re-rendering like useState does.
+    - using useReducer to abstract away logic code from App component
+  - more experience with react-testing-library
+    - good coverage, still need to figure out how to test user clicking on carousel - it's a bit tricky in that anything that results is a change to css.
+  - how to create 3d shapes with css, animate them, and position them as I want
+    - including what an 'apothem' is! (distance from the center of a regular polygon to the center of any given side)
+    - css procedure for each facet - rotate it , then push it out along the z axis
