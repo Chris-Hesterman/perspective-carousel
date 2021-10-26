@@ -71,6 +71,7 @@ or
 
   - testing is a work in progress. It is helping to find issues in the code, for instance :
     - found when using 'useReducer', I am not passing 'dispatch' down to a child component correctly. This may account for some difficulty testing input events
+    - need to devise a test for Carousel component that tests user triggered rotation. May need to use Enzyme.
   - When adjusting the z-axis property, the carousel may go off to one side
     - it snaps back to center when clicked on, now at the new z position
     - although it works on mobile, it's not optimized for it. Inputs behave differently.
