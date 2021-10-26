@@ -56,6 +56,7 @@ const Carousel = ({ number, width, height, margin, zAxis }) => {
       return (
         <Facet
           key={facet}
+          id={facet}
           number={facet}
           angle={newAngle}
           apothem={apothem}

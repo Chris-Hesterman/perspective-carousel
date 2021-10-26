@@ -1,8 +1,17 @@
-import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+import {
+  render,
+  screen,
+  fireEvent,
+  cleanup,
+  waitFor
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import TestRenderer from 'react-test-renderer';
+import 'jest-styled-components';
 import Carousel from './Carousel';
 
 describe('Carousel', () => {
+  // const handleClick = jest.fn();
   const testProps = {
     number: 3,
     width: 15,
@@ -50,12 +59,32 @@ describe('Carousel', () => {
     expect(renderedFacets3.length).toBe(25);
   });
 
-  it('responds to clicking on it', () => {
-    render(<Carousel {...testProps} />);
+  xit('responds to clicking on it', async () => {
+    const handleClick = jest.fn();
+    const { getByText } = render(
+      <Carousel {...testProps} onClick={handleClick} />
+    );
 
-    const carousel = screen.getByTitle('carousel');
-    const facets = screen.getAllByTitle('facet');
+    const firstFacet = getByText('1');
+    const secondFacet = getByText('2');
+    const thirdFacet = getByText('3');
 
-    fireEvent.click(facets[0]);
+    expect(firstFacet).toHaveAttribute(
+      'style',
+      'background: rgba(200, 200, 200, 0.5); color: lime;'
+    );
+    expect(firstFacet).toHaveTextContent('1');
+
+    expect(secondFacet).toHaveAttribute(
+      'style',
+      'background: rgba(100, 100, 100, 0.7); color: transparent;'
+    );
+
+    expect(thirdFacet).toHaveAttribute(
+      'style',
+      'background: rgba(100, 100, 100, 0.7); color: transparent;'
+    );
+
+    userEvent.click(screen.getByTitle('carousel'));
   });
 });

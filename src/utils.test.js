@@ -42,8 +42,6 @@ describe('generateInputs', () => {
     const settingsLength = Object.keys(settings).length;
     const inputs = generateInputs(settings, changeHandler);
 
-    console.log(generateInputs(settings, changeHandler)[0]);
-
     expect(inputs).toHaveLength(settingsLength);
     expect(inputs[0].props.settings).toEqual(settings);
     expect(inputs[0].props.title).toBe('# FACETS');
