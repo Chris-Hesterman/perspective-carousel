@@ -1,7 +1,7 @@
 # Perspective Carousel Demo
 
 A utility for interactively examining effects of changing various settings
-of a 3d polygon based carousel.
+of a 3d polygon based carousel. Work in progress
 
 ## Screenshots
 
@@ -69,6 +69,8 @@ or
 
 - What are it's quirks to be resolved if possible?
 
+  - testing is a work in progress. It is helping to find issues in the code, for instance :
+    - found when using 'useReducer', I am not passing 'dispatch' down to a child component correctly. This may account for some difficulty testing input events
   - When adjusting the z-axis property, the carousel may go off to one side
     - it snaps back to center when clicked on, now at the new z position
     - although it works on mobile, it's not optimized for it. Inputs behave differently.
