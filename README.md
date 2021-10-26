@@ -16,7 +16,7 @@ of a 3d polygon based carousel.
 ## Installation
 
 - installation can be skipped by navigating to deployed application at https://frosty-jepsen-0f87b6.netlify.app/
-  **Otherwise**
+  ### Otherwise
 - Clone this repo
 - from project root directory run the following -
 
