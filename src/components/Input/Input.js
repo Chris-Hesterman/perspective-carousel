@@ -1,6 +1,9 @@
 import { StyledLabel, StyledInput } from './InputStyles';
 
 const Input = ({ title, name, value, handleChange, step }) => {
+  // console.log('from input', handleChange);
+  const hasMin = name === 'facet' || name === 'width' || name === 'height';
+  console.log([name, hasMin]);
   return (
     <StyledLabel>
       <StyledInput
@@ -9,6 +12,7 @@ const Input = ({ title, name, value, handleChange, step }) => {
         value={value}
         onChange={(e) => handleChange({ type: name, payload: +e.target.value })}
         step={step}
+        min={hasMin ? 0 : undefined}
       />
       {title}
     </StyledLabel>

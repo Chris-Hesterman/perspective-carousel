@@ -20,6 +20,7 @@ export const findRadius = (numSides, length) => {
 };
 
 export const generateInputs = (settings, handleChange) => {
+  // console.log('from utils', handleChange);
   return names.map((name, index) => {
     const value = settings[`${name}Input`];
 
