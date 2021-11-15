@@ -33,7 +33,7 @@ describe('<Form /> component', () => {
       expect(facets).toBeInTheDocument();
       expect(facets.value).toBe('3');
       userEvent.type(facets, '12');
-      expect(handleChange).toHaveBeenCalledTimes(1);
+      expect(handleChange).toHaveBeenCalledTimes(2);
     });
 
     it('renders width input and responds to changes', () => {

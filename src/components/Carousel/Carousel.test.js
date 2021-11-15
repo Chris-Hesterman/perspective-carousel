@@ -13,6 +13,7 @@ import Carousel from './Carousel';
 describe('Carousel', () => {
   // const handleClick = jest.fn();
   const testProps = {
+    rotationAngle: 0,
     number: 3,
     width: 15,
     height: 10,
@@ -59,9 +60,9 @@ describe('Carousel', () => {
     expect(renderedFacets3.length).toBe(25);
   });
 
-  xit('responds to clicking on it', async () => {
+  it('responds to clicking on it', async () => {
     const handleClick = jest.fn();
-    const { getByText } = render(
+    const { getByTitle, getByText, rerender } = render(
       <Carousel {...testProps} onClick={handleClick} />
     );
 
@@ -86,5 +87,12 @@ describe('Carousel', () => {
     );
 
     userEvent.click(screen.getByTitle('carousel'));
+
+    screen.debug();
+    rerender(<Carousel {...testProps} onClick={handleClick} />);
+    expect(screen.getByTitle('carousel')).toHaveStyleRule(
+      'transform',
+      'rotateY(30deg) translateZ(0rem)'
+    );
   });
 });

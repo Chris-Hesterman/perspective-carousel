@@ -73,11 +73,13 @@ const Carousel = ({ number, width, height, margin, zAxis }) => {
 
   return (
     <StyledCarousel
+      rotationAngle={rotationAngle}
       angle={angle}
       onClick={handleClick}
       ref={carouselRef}
       zAxis={zAxis}
       title="carousel"
+      data-cy="carousel"
     >
       {generateFacets()}
     </StyledCarousel>

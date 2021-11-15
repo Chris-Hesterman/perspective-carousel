@@ -1,0 +1,6 @@
+{
+  "testFiles": "**_spec.{js, ts, jsx, tsx}",
+  "componentFolder": "cypress/integration",
+  "viewportHeight": 800,
+  "viewportWidth": 700
+}
