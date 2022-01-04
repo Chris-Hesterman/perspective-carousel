@@ -18,7 +18,7 @@ const Carousel = ({ number, width, height, margin, zAxis }) => {
   const handleClick = (e) => {
     const timeNow = Date.now();
 
-    if (timeNow - time.current > 700) {
+    if (timeNow - time.current > 700 && e.target.title === 'facet') {
       rotationAngle += angle;
       time.current = timeNow;
       e.target.parentNode.style.transform = `rotateY(${-rotationAngle}deg) translateZ(${zAxis}rem)`;

@@ -7,7 +7,7 @@ const Facet = ({ number, angle, apothem, width, height, margin }) => {
       apothem={apothem}
       width={width}
       height={height}
-      margin={margin}
+      // margin={margin}
       title="facet"
     >
       {number}

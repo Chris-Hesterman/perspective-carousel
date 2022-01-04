@@ -1,17 +1,21 @@
 import {
   render,
+  act,
   screen,
   fireEvent,
   cleanup,
-  waitFor
+  waitForElementToBeRemoved,
+  findByText,
+  waitFor,
+  findByTitle
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import TestRenderer from 'react-test-renderer';
 import 'jest-styled-components';
 import Carousel from './Carousel';
+import App from '../App/App';
 
 describe('Carousel', () => {
-  // const handleClick = jest.fn();
   const testProps = {
     rotationAngle: 0,
     number: 3,
@@ -37,7 +41,10 @@ describe('Carousel', () => {
     zAxis: 0
   };
 
-  afterEach(cleanup);
+  afterEach(() => {
+    jest.clearAllMocks();
+    cleanup();
+  });
 
   it('renders 3 initial facets', () => {
     render(<Carousel {...testProps} />);
@@ -58,17 +65,19 @@ describe('Carousel', () => {
     const renderedFacets3 = screen.getAllByTitle('facet');
 
     expect(renderedFacets3.length).toBe(25);
+    cleanup();
   });
 
-  it('responds to clicking on it', async () => {
-    const handleClick = jest.fn();
-    const { getByTitle, getByText, rerender } = render(
-      <Carousel {...testProps} onClick={handleClick} />
+  it('responds to clicking on it', () => {
+    const handleClickMock = jest.fn();
+    const { getByText, container } = render(
+      <Carousel {...testProps} onClick={handleClickMock} />
     );
+    // const { getByText, container } = render(<App />);
 
-    const firstFacet = getByText('1');
-    const secondFacet = getByText('2');
-    const thirdFacet = getByText('3');
+    const firstFacet = screen.getByText('1');
+    const secondFacet = screen.getByText('2');
+    const thirdFacet = screen.getByText('3');
 
     expect(firstFacet).toHaveAttribute(
       'style',
@@ -85,14 +94,10 @@ describe('Carousel', () => {
       'style',
       'background: rgba(100, 100, 100, 0.7); color: transparent;'
     );
+    console.log(container);
+    const carousel = screen.getByTitle('carousel');
+    console.log(fireEvent.click(screen.getByTitle('carousel')));
 
-    userEvent.click(screen.getByTitle('carousel'));
-
-    screen.debug();
-    rerender(<Carousel {...testProps} onClick={handleClick} />);
-    expect(screen.getByTitle('carousel')).toHaveStyleRule(
-      'transform',
-      'rotateY(30deg) translateZ(0rem)'
-    );
+    expect(handleClickMock).toHaveBeenCalled();
   });
 });

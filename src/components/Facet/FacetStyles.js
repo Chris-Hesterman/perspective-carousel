@@ -14,7 +14,7 @@ export const StyledFacet = styled.div`
     cursor: pointer;
   }
   position: absolute;
-  margin: ${(props) => `${props.margin / 2}rem`};
+  /* margin: ${(props) => `${props.margin / 2}rem`}; */
   left: ${(props) => `${-props.width / 2}rem`};
   top: ${(props) => `${-props.height / 2}rem`};
   transition: all 0.2s ease-in;
