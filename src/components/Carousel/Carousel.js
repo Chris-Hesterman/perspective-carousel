@@ -4,7 +4,7 @@ import { StyledCarousel } from './CarouselStyles';
 import Facet from '../Facet/Facet';
 
 const Carousel = ({ number, width, height, margin, zAxis }) => {
-  const time = useRef(Date.now());
+  let time = Date.now();
   const carouselRef = useRef();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   let backSides = [];
@@ -18,9 +18,9 @@ const Carousel = ({ number, width, height, margin, zAxis }) => {
   const handleClick = (e) => {
     const timeNow = Date.now();
 
-    if (timeNow - time.current > 700 && e.target.title === 'facet') {
+    if (timeNow - time > 700 && e.target.title === 'facet') {
       rotationAngle += angle;
-      time.current = timeNow;
+      time = timeNow;
       e.target.parentNode.style.transform = `rotateY(${-rotationAngle}deg) translateZ(${zAxis}rem)`;
 
       changeFacetColor();
