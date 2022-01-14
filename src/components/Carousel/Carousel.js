@@ -22,6 +22,7 @@ const Carousel = ({ number, width, height, margin, zAxis }) => {
       rotationAngle += angle;
       time.current = timeNow;
       e.target.parentNode.style.transform = `rotateY(${-rotationAngle}deg) translateZ(${zAxis}rem)`;
+
       changeFacetColor();
     }
   };

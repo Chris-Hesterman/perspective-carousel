@@ -8,6 +8,7 @@ const Input = ({ title, name, value, handleChange, step }) => {
     <StyledLabel>
       <StyledInput
         name={name}
+        title={name}
         type="number"
         value={value}
         onChange={(e) => handleChange({ type: name, payload: +e.target.value })}

@@ -1,19 +1,9 @@
-import {
-  render,
-  act,
-  screen,
-  fireEvent,
-  cleanup,
-  waitForElementToBeRemoved,
-  findByText,
-  waitFor,
-  findByTitle
-} from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import TestRenderer from 'react-test-renderer';
+// import TestRenderer from 'react-test-renderer';
 import 'jest-styled-components';
 import Carousel from './Carousel';
-import App from '../App/App';
+// import App from '../App/App';
 
 describe('Carousel', () => {
   const testProps = {
@@ -68,36 +58,41 @@ describe('Carousel', () => {
     cleanup();
   });
 
-  it('responds to clicking on it', () => {
-    const handleClickMock = jest.fn();
-    const { getByText, container } = render(
-      <Carousel {...testProps} onClick={handleClickMock} />
-    );
-    // const { getByText, container } = render(<App />);
+  it('responds to clicking on it', async () => {
+    render(<Carousel {...testProps} />);
+    // render(<App />);
 
     const firstFacet = screen.getByText('1');
     const secondFacet = screen.getByText('2');
     const thirdFacet = screen.getByText('3');
 
-    expect(firstFacet).toHaveAttribute(
-      'style',
+    expect(firstFacet).toHaveStyle(
       'background: rgba(200, 200, 200, 0.5); color: lime;'
     );
     expect(firstFacet).toHaveTextContent('1');
 
-    expect(secondFacet).toHaveAttribute(
-      'style',
+    expect(secondFacet).toHaveStyle(
       'background: rgba(100, 100, 100, 0.7); color: transparent;'
     );
 
-    expect(thirdFacet).toHaveAttribute(
-      'style',
+    expect(thirdFacet).toHaveStyle(
       'background: rgba(100, 100, 100, 0.7); color: transparent;'
     );
-    console.log(container);
-    const carousel = screen.getByTitle('carousel');
-    console.log(fireEvent.click(screen.getByTitle('carousel')));
 
-    expect(handleClickMock).toHaveBeenCalled();
+    await new Promise((resolve) => setTimeout(() => resolve(), 725));
+
+    userEvent.click(screen.getByText('1'));
+
+    expect(screen.getByText('1')).toHaveStyle(
+      'background: rgba(100, 100, 100, 0.7); color: transparent;'
+    );
+
+    expect(screen.getByText('2')).toHaveStyle(
+      'background: rgba(200, 200, 200, 0.5); color: lime;'
+    );
+
+    expect(screen.getByText('3')).toHaveStyle(
+      'background: rgba(100, 100, 100, 0.7); color: transparent;'
+    );
   });
 });

@@ -3,7 +3,7 @@ import { settingsReducer } from './reducers';
 describe('settingsReducer', () => {
   it('returns correct new state object when existing state object and an appropriate action object are provided', () => {
     const state = {
-      facetInput: 3,
+      facetsInput: 3,
       widthInput: 15,
       heightInput: 10,
       marginInput: 0,
@@ -11,10 +11,10 @@ describe('settingsReducer', () => {
       originYInput: 80,
       zAxisInput: 0
     };
-    const testAction1 = { type: 'facet', payload: 12 };
+    const testAction1 = { type: 'facets', payload: 12 };
 
     const expected1 = {
-      facetInput: 12,
+      facetsInput: 12,
       widthInput: 15,
       heightInput: 10,
       marginInput: 0,
@@ -28,7 +28,7 @@ describe('settingsReducer', () => {
 
     const testAction2 = { type: 'originY', payload: 125 };
     const expected2 = {
-      facetInput: 3,
+      facetsInput: 3,
       widthInput: 15,
       heightInput: 10,
       marginInput: 0,
@@ -42,7 +42,7 @@ describe('settingsReducer', () => {
 
     const testAction3 = { type: 'width', payload: 25 };
     const expected3 = {
-      facetInput: 3,
+      facetsInput: 3,
       widthInput: 25,
       heightInput: 10,
       marginInput: 0,
@@ -56,7 +56,7 @@ describe('settingsReducer', () => {
 
     const testAction4 = { type: 'height', payload: 25 };
     const expected4 = {
-      facetInput: 3,
+      facetsInput: 3,
       widthInput: 15,
       heightInput: 25,
       marginInput: 0,
@@ -70,7 +70,7 @@ describe('settingsReducer', () => {
 
     const testAction5 = { type: 'margin', payload: 10 };
     const expected5 = {
-      facetInput: 3,
+      facetsInput: 3,
       widthInput: 15,
       heightInput: 10,
       marginInput: 10,
@@ -84,7 +84,7 @@ describe('settingsReducer', () => {
 
     const testAction6 = { type: 'perspective', payload: 100 };
     const expected6 = {
-      facetInput: 3,
+      facetsInput: 3,
       widthInput: 15,
       heightInput: 10,
       marginInput: 0,
@@ -98,7 +98,7 @@ describe('settingsReducer', () => {
 
     const testAction7 = { type: 'zAxis', payload: -55 };
     const expected7 = {
-      facetInput: 3,
+      facetsInput: 3,
       widthInput: 15,
       heightInput: 10,
       marginInput: 0,

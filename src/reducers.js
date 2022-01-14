@@ -1,8 +1,8 @@
 export const settingsReducer = (state, action) => {
   const setting = action.type;
   const options = {
-    facet: () => {
-      return { ...state, facetInput: action.payload };
+    facets: () => {
+      return { ...state, facetsInput: action.payload };
     },
     width: () => {
       return { ...state, widthInput: action.payload };

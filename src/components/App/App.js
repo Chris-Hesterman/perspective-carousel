@@ -16,6 +16,7 @@ const App = () => {
   return (
     <StyledApp
       className="App"
+      title="app"
       perspective={settings.perspectiveInput}
       originY={settings.originYInput}
       zAxis={settings.zAxisInput}
@@ -24,7 +25,7 @@ const App = () => {
         {isVisible ? 'HIDE SETTINGS' : 'SHOW SETTINGS'}
       </StyledButton>
       <Carousel
-        number={settings.facetInput}
+        number={settings.facetsInput}
         width={settings.widthInput}
         height={settings.heightInput}
         margin={settings.marginInput}
@@ -32,7 +33,7 @@ const App = () => {
       />
       <Form
         isVisible={isVisible}
-        facetInput={settings.facetInput}
+        facetInput={settings.facetsInput}
         widthInput={settings.widthInput}
         heightInput={settings.heightInput}
         marginInput={settings.marginInput}

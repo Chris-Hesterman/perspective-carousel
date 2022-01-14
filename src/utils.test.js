@@ -31,7 +31,7 @@ describe('generateInputs', () => {
   it('generates array of Input components given a settings object and handleChange function', () => {
     const changeHandler = jest.fn();
     const settings = {
-      facetInput: 3,
+      facetsInput: 3,
       widthInput: 15,
       heightInput: 10,
       marginInput: 0,

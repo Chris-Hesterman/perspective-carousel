@@ -1,5 +1,5 @@
 export const initialSettings = {
-  facetInput: 3,
+  facetsInput: 3,
   widthInput: 15,
   heightInput: 10,
   marginInput: 0,
@@ -9,7 +9,7 @@ export const initialSettings = {
 };
 
 export const names = [
-  'facet',
+  'facets',
   'width',
   'height',
   'margin',
